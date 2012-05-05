@@ -1,2 +1,6 @@
 h1= title
-p Welcome to #{title}
+ul
+  - each user in users
+    li
+      a= user.name
+      em (#{user.drinks.length})
