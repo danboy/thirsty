@@ -759,11 +759,11 @@ ol#iterations li article h3 {
 }
 @media only screen and (min-width: 900px) {
   body section {
-    width: 940px;
+    width: 440px;
     padding: 10px;
   }
   body header {
-    width: 960px;
+    width: 440px;
     padding: 0;
   }
   form {
@@ -880,4 +880,14 @@ details summary::-webkit-details-marker {
 }
 body {
   background: #eee;
+}
+ul#users li{
+  border: 1px solid #EEE;
+  background-color: #FFF;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+ul#users li em{
+  margin: 0 10px;
 }

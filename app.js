@@ -80,8 +80,19 @@ app.get('/', function(req, res){
     res.render('index', { title: 'Drinks owed.', users: users });
   });
 });
+app.get('/users', function(req, res){
+  User.find({}, function(err, users){
+    res.send(users);
+  });
+});
 
-app.post('/users/', checkForDrinks, function(req, res){
+app.get('/users/:name', function(req, res){
+  User.findOne({name: req.params.name}, function(err, user){
+    res.send(user);
+  });
+});
+
+app.post('/users', checkForDrinks, function(req, res){
   if(req.body.drink){
     User.findOne({name: req.body.drink.to}, function(err, user){
       if(err) throw err;
@@ -107,7 +118,8 @@ app.post('/users/', checkForDrinks, function(req, res){
   }
 });
 app.post('/dan',function(req, res){
-  dan = new User({name: 'Dan'});
+  dan = new User({name: 'Dan Nawara'});
+  dan.drinks.push({type: 'beer', from: 'Dan Nawara'});
   dan.save(function(er){
     if(!er){
       res.send("created dan\n")
