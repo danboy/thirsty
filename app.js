@@ -42,5 +42,5 @@ app.post('/users', users.checkForDrinks, users.create);
 
 app.get('/users/:name', users.show);
 
-app.listen(3000);
+app.listen(8334);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
