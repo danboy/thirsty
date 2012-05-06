@@ -24,7 +24,7 @@ var User = mongoose.model('User', User);
 var Beer = {
   index: function(req, res){
     User.find({}, function(err, users){
-      res.render('index', { title: 'Drinks owed.', users: users });
+      res.render('index', { title: 'Thirsty?', users: users });
     });
   }
 , list: function(req, res){
@@ -35,6 +35,11 @@ var Beer = {
 , show: function(req, res){
     User.findOne({name: req.params.name}, function(err, user){
       res.send(user);
+    });
+  }
+, details: function(req, res){
+    User.findOne({name: req.params.name}, function(err, user){
+      res.render('show', { title: user.name, user: user});
     });
   }
 , recent: function(req, res){

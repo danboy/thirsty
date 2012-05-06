@@ -1,6 +1,11 @@
 h1= title
+p Want to buy someone a drink? First you need an account. How do you get an account? Someone needs to buy you a drink first.
+
+p Contact thirsty@pinmokey.com to learn more.
+
+p Look! It's some folks who earned some drinks:
 ul#users
   - each user in users
     li
-      a= user.name
+      a( href="/users/#{user.name}" )= user.name
       em (#{user.drinks.length})

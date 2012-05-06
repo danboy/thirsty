@@ -40,7 +40,9 @@ app.get('/users', users.list);
 
 app.post('/users', users.checkForDrinks, users.create);
 
-app.get('/users/:name', users.show);
+app.get('/users/:name', users.details);
+
+app.get('/:name', users.show);
 
 app.listen(8334);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
