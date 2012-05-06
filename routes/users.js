@@ -3,14 +3,20 @@ mongoose.connect('mongodb://localhost/beer');
 
 var Schema = mongoose.Schema;
 
+var Groups = new Schema({
+  name: {type: String, required: true, unique: true}
+});
+
 var Drinks = new Schema({
-  type: { type: String, required: true}
-, from: { type: String, requred: true }
+  type:  { type: String, required: true}
+, drunk: { type: Date, default: null }
+, from:  { type: String, requred: true }
 });
 
 var User = new Schema({  
   name:       { type: String, required: true, unique: true}
 , drinks:     [Drinks]
+, groups:     [Groups]
 , email:      { type: String, requred: true }
 , lastDrink:  { type: Date, default: Date.now }
 , updatedAt:  { type: Date, default: Date.now }
