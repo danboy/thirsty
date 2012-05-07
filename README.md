@@ -1,4 +1,4 @@
-beer
+Thirsty
 ====
 
 Buy someone a beer for their hard work.
