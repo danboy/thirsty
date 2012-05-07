@@ -11,4 +11,5 @@ THe only way to get a user account is if someone buys you a beer.
 
 A hubot script is located in the root called beer.coffee add htat to
 hubot to do things like:
+
     whiskey buy Dan Nawara a beer
