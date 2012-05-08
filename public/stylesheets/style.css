@@ -384,7 +384,7 @@ body header menu li {
 body section {
   border: 1px solid #ccc;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 3px;
   margin: 20px auto;
   padding: 10px;
   background-image: linear-gradient(bottom, #c8c8c8 11%, #fff 56%);
