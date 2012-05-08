@@ -1,11 +1,8 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+  , sockjs  = require('sockjs');
 mongoose.connect('mongodb://localhost/beer');
 
 var Schema = mongoose.Schema;
-
-var Groups = new Schema({
-  name: {type: String, required: true, unique: true}
-});
 
 var Drinks = new Schema({
   type:  { type: String, required: true}
@@ -16,7 +13,6 @@ var Drinks = new Schema({
 var User = new Schema({  
   name:       { type: String, required: true, unique: true}
 , drinks:     [Drinks]
-, groups:     [Groups]
 , email:      { type: String, requred: true }
 , lastDrink:  { type: Date, default: Date.now }
 , updatedAt:  { type: Date, default: Date.now }
@@ -52,12 +48,12 @@ var Beer = {
     User.find({$where: "this.drinks.length > 0"}, function(err, recent){
       if(err) throw err;
       res.send(recent);
-    });
+    }).sort('updatedAt',-1);
   }
 , create: function(req, res){
     if(req.body.drink){
       User.findOne({name: req.body.drink.to}, function(err, user){
-        if(err) throw err;
+        if(err) res.send(err);
         if(user){
           user.drinks.push({type: req.body.drink.type, from: req.body.drink.from});
           user.updatedAt = new Date();
@@ -71,8 +67,11 @@ var Beer = {
           user = new User({name: req.body.drink.to, lastDrink: d, email: req.body.drink.email});
           user.drinks.push({type: req.body.drink.type, from: req.body.drink.from});
           user.save(function(err){
-          if(err) throw err;
+          if(err){
+            res.send(err);
+          };
             res.send(user);
+            //SOCKETS
           });
         }
       });

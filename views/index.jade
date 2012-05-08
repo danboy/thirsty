@@ -9,3 +9,15 @@ ul#users
     li
       a( href="/users/#{user.name}" )= user.name
       em earned #{user.drinks.length} drink(s)
+script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
+script
+  var sock = new SockJS(window.location.origin+'/round/');
+  sock.onopen = function() {
+    console.log('open');
+  };
+  sock.onmessage = function(e) {
+    console.log('message', e.data);
+  };
+  sock.onclose = function() {
+    console.log('close');
+  };

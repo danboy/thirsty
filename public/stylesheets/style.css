@@ -757,23 +757,6 @@ ol#iterations li article h3 {
 .game_board .button {
   color: #333;
 }
-@media only screen and (min-width: 900px) {
-  body section {
-    width: 440px;
-    padding: 10px;
-  }
-  body header {
-    width: 440px;
-    padding: 0;
-  }
-  form {
-    width: auto;
-    margin: 10px 0;
-  }
-  #messages {
-    width: 960px;
-  }
-}
 details summary:after {
   display: block;
   margin: -20px 0 20px;
